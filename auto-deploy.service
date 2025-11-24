@@ -3,17 +3,20 @@
 
 [Unit]
 Description=Automated Git Pull and Docker Deploy
-After=network-online.target docker.service
-Requires=docker.service
+# FIX: Use the Snap service name found in your logs
+After=network-online.target snap.docker.dockerd.service
+Requires=snap.docker.dockerd.service
 
 [Service]
 Type=simple
 User=root
 
-# CHANGE THIS PATH to where you put the script
-ExecStart=/bin/bash /home/lanzarote/dimigoin-room/auto_deploy.sh
+# CRITICAL: Snap binaries (like docker) are in /snap/bin, which systemd doesn't check by default
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
 
-# Restart the script if it crashes
+# CHANGE THIS PATH to where you put your script
+ExecStart=/bin/bash /path/to/your/project/auto_deploy.sh
+
 Restart=always
 RestartSec=10
 

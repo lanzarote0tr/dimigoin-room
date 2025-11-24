@@ -1,6 +1,7 @@
 import express from 'express';
 import createError from 'http-errors';
 import pool from '../utils/connectdb.js';
+import passport from '../utils/passport.js';
 import { verifySession, applySession, purgeSession, refreshSession } from '../utils/session.js';
 
 const router = express.Router();
@@ -9,17 +10,19 @@ router.get('/session', verifySession, (req, res) => {
   return res.status(200).json({ message: "Session is valid", userId: req.session.userId });
 });
 
-router.get('/login', async(req, res, next) => {
-  passport.authenticate('google', { scope: ['profile', 'email'] })
-});
+router.get('/login', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-router.get('/login-callback', async(req, res, next) => {
+router.get('/login-callback',
   passport.authenticate('google', { failureRedirect: '/login-failed' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/dashboard');
+  async (req, res, next) => {
+    try {
+      await applySession(req, res, req.user.id);
+      res.redirect('/dashboard');
+    } catch (err) {
+      return next(createError(500, "Failed to apply session"));
+    }
   }
-});
+);
 
 router.post('/logout', verifySession, (req, res, next) => {
   try {
