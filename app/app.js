@@ -4,6 +4,7 @@ import path, { parse } from "path";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import cookieParser from "cookie-parser";
+import csurf from 'csurf';
 import dotenv from "dotenv";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
@@ -106,6 +107,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use(csurf());
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -114,6 +117,10 @@ app.use(express.static(path.join(__dirname, 'client', 'dist')));
 
 // API routes should be defined before the catch-all route
 app.use("/api", apiRouter);
+
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
