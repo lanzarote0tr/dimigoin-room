@@ -1,0 +1,20 @@
+{
+  "name": "dimigoin-room",
+  "version": "1.0.0",
+  "description": "A room borrowing system",
+  "homepage": "https://github.com/lanzarote0tr/dimigoin-room#readme",
+  "bugs": {
+    "url": "https://github.com/lanzarote0tr/dimigoin-room/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanzarote0tr/dimigoin-room.git"
+  },
+  "license": "ISC",
+  "author": "Lanzarote",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  }
+}

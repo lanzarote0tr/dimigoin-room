@@ -1,0 +1,21 @@
+# Place this file in /etc/systemd/system/auto-deploy.service
+# Then run: sudo systemctl enable --now auto-deploy
+
+[Unit]
+Description=Automated Git Pull and Docker Deploy
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+Type=simple
+User=root
+
+# CHANGE THIS PATH to where you put the script
+ExecStart=/bin/bash /home/lanzarote/dimigoin-room/auto_deploy.sh
+
+# Restart the script if it crashes
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

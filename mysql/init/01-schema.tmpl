@@ -1,0 +1,37 @@
+CREATE DATABASE IF NOT EXISTS ${DB_DATABASE}
+    CHARACTER SET utf8mb4
+    COLLATE utf8mb4_0900_ai_ci;  -- general-purpose, Unicode 9.0 collation
+USE ${DB_DATABASE};
+CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
+GRANT ALL PRIVILEGES ON ${DB_DATABASE}.* TO '${DB_USER}'@'%';
+FLUSH PRIVILEGES;
+
+CREATE TABLE users (
+  id                BIGINT UNSIGNED  NOT NULL UNIQUE,
+  password_hash     VARCHAR(255)     NOT NULL, -- e.g., Argon2id PHC string
+  email             VARCHAR(320)     NOT NULL, -- always stored in lowercase
+  is_verified       BOOLEAN          NOT NULL DEFAULT FALSE,
+  name              VARCHAR(100)     COLLATE utf8mb4_0900_as_ci NOT NULL, -- case-sensitive
+  role              ENUM('youth','company','admin') NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE IF NOT EXISTS requests (
+  id              INT             NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  return_time     DATETIME        NOT NULL,
+  ip              VARCHAR(45)     NOT NULL,
+  method          VARCHAR(10)     NOT NULL,
+  url             TEXT            NOT NULL,
+  status_code     INT             NOT NULL,
+  content_length  INT             NOT NULL,
+  user_agent      TEXT            NULL,
+  user_id         BIGINT UNSIGNED NULL,
+  referrer        TEXT            NULL,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+) ENGINE=InnoDB;
+
+-- Initialization check
+CREATE TABLE __init_ok (
+  ok TINYINT NOT NULL
+);
+INSERT INTO __init_ok (ok) VALUES (1);

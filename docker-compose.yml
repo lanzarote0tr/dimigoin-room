@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8.4
+    env_file: ./.env
+    volumes:
+      - dbdata:/var/lib/mysql
+      - ./mysql/init/:/docker-entrypoint-initdb.d/
+    restart: unless-stopped
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >
+          mysql -uroot -p"${MYSQL_ROOT_PASSWORD}" -Nse "SELECT ok FROM ${DB_DATABASE}.__init_ok LIMIT 1" | grep -qx 1
+      interval: 2s
+      timeout: 5s
+      retries: 10
+      start_period: 2s
+
+  node:
+    build: ./app
+    working_dir: /app
+    command: npm run start
+    env_file: ./.env
+    ports:
+      - "${PORT}:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  auto-updater:
+    build:
+      context: .
+      dockerfile: Dockerfile.updater
+    container_name: project_updater
+    restart: always
+    volumes:
+      # 1. Mount the current directory (the repo) to /app
+      - ./:/app
+      
+      # 2. CRITICAL: Mount the host's Docker socket
+      # This allows the container to run 'docker compose' on the HOST
+      - /var/run/docker.sock:/var/run/docker.sock
+      
+      # 3. Handle Git Credentials (SSH approach recommended)
+      # Uncomment the line below if using SSH keys for private repos
+      # - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
+    environment:
+      - TERM=xterm
+
+volumes: 
+  dbdata: {}
