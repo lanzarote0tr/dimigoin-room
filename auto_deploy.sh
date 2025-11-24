@@ -13,6 +13,11 @@ DB_DATA_PATH="./mysql_data"
 # The directory in the GIT REPO to watch for config changes
 WATCH_DIR="mysql/"
 
+# FIX: Trust the directory. 
+# Since this runs as root (via systemd) but the files are owned by your user,
+# Git blocks access unless we explicitly whitelist this path.
+git config --global --add safe.directory "$PROJECT_DIR"
+
 cd "$PROJECT_DIR" || { echo "Directory not found: $PROJECT_DIR"; exit 1; }
 
 echo "Starting Auto-Deploy with Smart DB Refresh..."
