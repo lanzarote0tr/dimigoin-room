@@ -1,7 +1,7 @@
 .constraint {
     max-width: 480px;
     margin: 0px auto;
-    height: 100svh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -9,6 +9,22 @@
     background-color: aliceblue;
 }
 
+.vstack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.hstack {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 svg {
     width: 100%;

@@ -132,7 +132,7 @@ app.get('/', function(req, res) {
   if (isLoggedIn(req)) {
     return res.redirect('/app');
   } else {
-    res.render('index', { csrfToken: req.csrfToken() });
+    res.render('index');
   }
 });
 
@@ -141,13 +141,9 @@ app.use('/app', frontendRouter);
 // API routes should be defined before the catch-all route
 app.use("/api", apiRouter);
 
-app.get('/api/csrf-token', (req, res) => {
-  res.json({ csrfToken: req.csrfToken() });
-});
-
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+  return next(createError(404));
 });
 
 // error handler
