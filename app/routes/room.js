@@ -15,7 +15,7 @@ router.post('/apply', async function(req, res, next) {
     return next(createError(400, "Missing required fields"));
   }
   const [rst] = await pool.query(
-    "INSERT INTO room_applications (students, activity_date, activity_time, activity_description) VALUES (?, ?, ?, ?)",
+    "INSERT INTO applications (students, activity_date, activity_time, activity_description) VALUES (?, ?, ?, ?)",
     [student, date, time, description]
   );
   return res.status(200).json({ success: true });
