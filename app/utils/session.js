@@ -10,14 +10,12 @@ function verifySession(req, res, next) {
 }
 
 // Apply session after login/register
-function applySession(req, next, userId) {
+function applySession(req, userId) {
   req.session.userId = userId;
-  req.session.isVerified = true;
   req.session.save(function (err) {
     if (err) {
       throw createError(500, "Error saving session");
     }
-    next();
   });
 }
 

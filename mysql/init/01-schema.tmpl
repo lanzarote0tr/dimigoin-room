@@ -8,9 +8,8 @@ FLUSH PRIVILEGES;
 
 CREATE TABLE users (
   id                BIGINT UNSIGNED  NOT NULL UNIQUE,
-  email             VARCHAR(320)     NOT NULL, -- always stored in lowercase
-  is_verified       BOOLEAN          NOT NULL DEFAULT FALSE,
   name              VARCHAR(100)     COLLATE utf8mb4_0900_as_ci NOT NULL, -- case-sensitive
+  picture           TEXT            NULL,
   role              ENUM('teacher','student','admin') NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB;
