@@ -27,25 +27,5 @@ services:
       db:
         condition: service_healthy
 
-  auto-updater:
-    build:
-      context: .
-      dockerfile: Dockerfile.updater
-    container_name: project_updater
-    restart: always
-    volumes:
-      # 1. Mount the current directory (the repo) to /app
-      - ./:/app
-      
-      # 2. CRITICAL: Mount the host's Docker socket
-      # This allows the container to run 'docker compose' on the HOST
-      - /var/run/docker.sock:/var/run/docker.sock
-      
-      # 3. Handle Git Credentials (SSH approach recommended)
-      # Uncomment the line below if using SSH keys for private repos
-      # - ~/.ssh/id_rsa:/root/.ssh/id_rsa:ro
-    environment:
-      - TERM=xterm
-
 volumes: 
   dbdata: {}
