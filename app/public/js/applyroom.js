@@ -8,6 +8,7 @@ function submit() {
         headers: {
             "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify({
             student: student,
             date: date,
