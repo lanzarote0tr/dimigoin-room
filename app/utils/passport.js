@@ -6,7 +6,7 @@ dotenv.config();
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://room.trillion-won.com/api/auth/login-callback"
+    callbackURL: "https://room.trillion-won.com/api/auth/login-callback"
   },
   function(accessToken, refreshToken, profile, done) {
     // This is where you would save the user to your database.
