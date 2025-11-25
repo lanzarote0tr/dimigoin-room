@@ -2,7 +2,7 @@ import createError from "http-errors";
 
 // Middleware to verify session
 function verifySession(req, res, next) {
-  if (req.session && req.session.isVerified) {
+  if (req.session && req.session.userId) {
     return next();
   } else {
     return next(createError(401, "Unauthorized: Invalid session"));
@@ -30,21 +30,5 @@ function purgeSession(req, res, next) {
   });
 }
 
-// Helper: check if user is logged in
-function isLoggedIn(req) {
-  return req.session && req.session.isVerified && req.session.userId;
-}
-// Refresh session expiration
-function refreshSession(req, res, next) {
-  if (!req.session) {
-    return next(createError(401, "No session to refresh"));
-  }
-  req.session.touch(function (err) {
-    if (err) {
-      return next(createError(500, "Error refreshing session"));
-    }
-    next();
-  });
-}
 
 export { verifySession, applySession, purgeSession, isLoggedIn, refreshSession };
