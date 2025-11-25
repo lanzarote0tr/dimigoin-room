@@ -31,4 +31,6 @@ function submit() {
 
     return;
 }
-document.getElementById("submit-button").addEventListener("click", submit);
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("submit-button").addEventListener("click", submit);
+});
