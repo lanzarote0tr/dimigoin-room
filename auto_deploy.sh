@@ -3,7 +3,7 @@
 # --- Configuration ---
 PROJECT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 BRANCH="main"
-CHECK_INTERVAL=60
+CHECK_INTERVAL=10   # in seconds
 DB_DATA_PATH="./mysql_data"
 WATCH_DIR="mysql/"
 LOG_FILE="/tmp/auto_deploy_last_run.log" # Temp file to capture output reliably
