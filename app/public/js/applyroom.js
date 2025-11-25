@@ -31,3 +31,4 @@ function submit() {
 
     return;
 }
+document.getElementById("yourButtonId").addEventListener("click", submit);
