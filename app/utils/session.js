@@ -30,5 +30,8 @@ function purgeSession(req, res, next) {
   });
 }
 
+function isLoggedIn(req) {
+  return req.session && req.session.userId;
+}
 
-export { verifySession, applySession, purgeSession };
+export { verifySession, applySession, purgeSession, isLoggedIn };
