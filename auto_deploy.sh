@@ -71,10 +71,10 @@ while true; do
         echo "------------------------------------------------"
         echo "STEP 1: Rebuilding and Restarting Containers..."
         # Added --build flag here to handle build within the up command
-        echo "Command: $DOCKER_CMD up -d --build --force-recreate --remove-orphans"
+        echo "Command: $DOCKER_CMD up -d --build --remove-orphans"
         
         # Run up with build and redirect ALL output to a temp file
-        $DOCKER_CMD up -d --build --force-recreate --remove-orphans > "$LOG_FILE" 2>&1
+        $DOCKER_CMD up -d --build --remove-orphans > "$LOG_FILE" 2>&1
         UP_EXIT=$?
         
         # Dump the file to stdout so Journalctl sees it
