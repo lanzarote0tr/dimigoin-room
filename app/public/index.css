@@ -10,20 +10,36 @@
 }
 
 .vstack {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-}
-.hstack {
+    height: 100%;
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
+    justify-content: center;
+}
+
+.hstack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dimigoin-logo {
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  box-sizing: border-box;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  user-select: none;
+  text-decoration: none;
+}
+.dimigoin-logo > p {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    font-size: 1.5rem;
+  font-weight: 600;
 }
 
 svg {
