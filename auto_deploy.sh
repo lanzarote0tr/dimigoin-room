@@ -54,7 +54,7 @@ while true; do
         # 1. DB Logic
         if git diff --name-only "$LOCAL" "$REMOTE" | grep -q "^$WATCH_DIR"; then
             echo "ALERT: Database config changed. Wiping data..."
-            $DOCKER_CMD down -v
+            $DOCKER_CMD down -v  # TODO: Don't remove downed volumes
             if [ -d "$DB_DATA_PATH" ]; then
                 sudo rm -rf "$DB_DATA_PATH"/*
                 echo "Database wiped."
