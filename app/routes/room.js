@@ -4,11 +4,11 @@ import { verifySession } from "../utils/session.js";
 
 const router = Router();
 
-router.get('/', verifySession, function(req, res) {
+router.get('/', function(req, res) {
   res.status(200).json({ message: "Room API is working", userId: req.session.userId });
 });
 
-router.post('/apply', verifySession, async function(req, res, next) {
+router.post('/apply', async function(req, res, next) {
   const { student, date, time, description } = req.body;
   if (!student || !date || !time || !description) {
     return next(createError(400, "Missing required fields"));
