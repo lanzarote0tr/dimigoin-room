@@ -13,9 +13,11 @@ import session from 'express-session';
 import connectMySQL from 'express-mysql-session';
 
 import apiRouter from "./routes/api.js";
+import frontendRouter from "./routes/frontend.js";
 import pool from './utils/connectdb.js';
 import passport from 'passport';
 import './utils/passport.js';
+import { isLoggedIn } from "./utils/session.js";
 
 // __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -112,8 +114,17 @@ app.use(csurf());
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get('/', function(req, res) {
+  if (isLoggedIn(req)) {
+    return res.redirect('/app');
+  } else {
+    res.render('index', { csrfToken: req.csrfToken() });
+  }
+});
+
+app.use('/app', frontendRouter);
 
 // API routes should be defined before the catch-all route
 app.use("/api", apiRouter);
