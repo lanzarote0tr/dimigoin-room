@@ -37,7 +37,7 @@ router.get('/login-callback', passport.authenticate('google', { failureRedirect:
     );
   }
   applySession(req, next, userId);
-  return res.redirect('/');
+  return res.redirect('/app/applyroom');
   }
 );
 

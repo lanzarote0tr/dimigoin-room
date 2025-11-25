@@ -3,7 +3,7 @@ function submit() {
     date = document.getElementById("date").value;
     time = document.getElementById("time").value;
     description = document.getElementById("description").value;
-    fetch("/api/applyroom/submit", {
+    fetch("/api/room/apply", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
