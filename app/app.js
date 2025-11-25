@@ -71,12 +71,24 @@ app.use(session({
   // rolling: true // Uncomment to reset maxAge on every response
 }));
 
-const BLOCKED_IPS = new Set(
-  fs.readFileSync(path.join(__dirname, 'ipban.txt'), 'utf8')
-    .split('\n')
-    .map(ip => ip.trim())
-    .filter(ip => ip && !ip.startsWith('#')) // skip empty or commented lines
-);
+const ipbanPath = path.join(__dirname, 'ipban.txt');
+let BLOCKED_IPS = new Set();
+try {
+  if (fs.existsSync(ipbanPath)) {
+    const content = fs.readFileSync(ipbanPath, 'utf8');
+    BLOCKED_IPS = new Set(
+      content
+        .split('\n')
+        .map(ip => ip.trim())
+        .filter(ip => ip && !ip.startsWith('#'))
+    );
+  } else {
+    console.warn(`ipban.txt not found at ${ipbanPath}, starting with empty block list.`);
+  }
+} catch (err) {
+  console.error('Failed to load ipban.txt, starting with empty block list:', err);
+  BLOCKED_IPS = new Set();
+}
 
 async function logger(req, res) {
   try {
