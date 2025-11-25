@@ -12,7 +12,9 @@ router.get('/applyroom', function(req, res) {
 });
 
 router.get('/teacher', function(req, res) {
-  res.render('teacher');
+  const [rst] = req.query('SELECT * FROM applications');
+  console.log(rst);
+  res.render('teacher', { applies: rst });
 });
 
 router.use(function (req, res, next) {
