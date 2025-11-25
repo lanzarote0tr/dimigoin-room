@@ -2,7 +2,7 @@ import express from 'express';
 import createError from 'http-errors';
 import pool from '../utils/connectdb.js';
 import passport from '../utils/passport.js';
-import { verifySession, applySession, purgeSession, refreshSession } from '../utils/session.js';
+import { verifySession, applySession, purgeSession } from '../utils/session.js';
 
 const router = express.Router();
 
