@@ -1,0 +1,40 @@
+.constraint {
+    max-width: 480px;
+    margin: 0px auto;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+}
+
+
+svg {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+.google-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    background:#fff;
+    border:1px solid #dadce0;
+    border-radius:6px;
+    color:#202124;
+    text-decoration:none;
+    font-weight:500;
+    box-shadow:0 1px 1px rgba(0,0,0,0.05);
+}
+.google-btn:hover {
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+.google-icon svg{
+    display:block;
+    width:18px;
+    height:18px;
+}

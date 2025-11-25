@@ -2,7 +2,7 @@
 FROM node:20-alpine AS prod
 WORKDIR /app
 
-ENV NODE_ENV=production
+# ENV NODE_ENV=production
 
 # Install server dependencies
 COPY package*.json ./
