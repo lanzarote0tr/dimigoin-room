@@ -16,7 +16,7 @@ export TERM=xterm-256color
 
 cd "$PROJECT_DIR" || { echo "ERROR: Directory not found: $PROJECT_DIR"; exit 1; }
 
-echo "Starting Auto-Deploy (Log Capture Mode)..."
+echo "Starting Auto-Deploy (Single 'Up' Mode)..."
 echo "Watching branch: $BRANCH"
 echo "Project Dir: $PROJECT_DIR"
 
@@ -48,8 +48,8 @@ while true; do
     if [ "$LOCAL" != "$REMOTE" ]; then
         echo "------------------------------------------------"
         echo "Update detected at $(date)!"
-        echo "   Local:  $LOCAL"
-        echo "   Remote: $REMOTE"
+        echo "    Local:  $LOCAL"
+        echo "    Remote: $REMOTE"
 
         # 1. DB Logic
         if git diff --name-only "$LOCAL" "$REMOTE" | grep -q "^$WATCH_DIR"; then
@@ -67,39 +67,25 @@ while true; do
         echo "Pulling git changes..."
         git reset --hard origin/$BRANCH
 
-        # 3. Build Step (Buffered to File to guarantee Journalctl capture)
+        # 3. Build & Up (Combined Step)
         echo "------------------------------------------------"
-        echo "STEP 1: Building Images..."
-        echo "Command: $DOCKER_CMD build --no-cache --progress=plain"
+        echo "STEP 1: Rebuilding and Restarting Containers..."
+        # Added --build flag here to handle build within the up command
+        echo "Command: $DOCKER_CMD up -d --build --force-recreate --remove-orphans"
         
-        # Run build and redirect ALL output to a temp file
-        # We use a file because systemd sometimes swallows piped output
-        $DOCKER_CMD build --no-cache --progress=plain > "$LOG_FILE" 2>&1
-        BUILD_EXIT=$?
+        # Run up with build and redirect ALL output to a temp file
+        $DOCKER_CMD up -d --build --force-recreate --remove-orphans > "$LOG_FILE" 2>&1
+        UP_EXIT=$?
         
         # Dump the file to stdout so Journalctl sees it
         cat "$LOG_FILE"
         
-        if [ $BUILD_EXIT -eq 0 ]; then
-            echo "Build Successful."
-            
-            # 4. Up Step
-            echo "------------------------------------------------"
-            echo "STEP 2: Restarting Containers..."
-            
-            $DOCKER_CMD up -d --force-recreate --remove-orphans > "$LOG_FILE" 2>&1
-            UP_EXIT=$?
-            cat "$LOG_FILE"
-            
-            if [ $UP_EXIT -eq 0 ]; then
-                echo "SUCCESS: Containers are up."
-                $DOCKER_CMD image prune -f > /dev/null 2>&1
-            else
-                echo "FAILURE: '$DOCKER_CMD up' failed (Exit Code: $UP_EXIT)."
-            fi
+        if [ $UP_EXIT -eq 0 ]; then
+            echo "SUCCESS: Containers are up and running."
+            $DOCKER_CMD image prune -f > /dev/null 2>&1
         else
             echo "#######################################################"
-            echo "CRITICAL FAILURE: Docker Build Failed (Exit Code: $BUILD_EXIT)"
+            echo "CRITICAL FAILURE: Docker Up/Build Failed (Exit Code: $UP_EXIT)"
             echo "See the output above for details."
             echo "#######################################################"
         fi
