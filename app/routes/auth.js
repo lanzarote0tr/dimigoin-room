@@ -14,10 +14,38 @@ router.get('/login', passport.authenticate('google', { scope: ['profile', 'email
 
 router.get('/login-callback',
   passport.authenticate('google', { failureRedirect: '/login-failed' }),
+  (req, res, next) => {
+    if (!req.user) {
+      console.log('No Google user info available');
+      return next();
+    }
+
+    // Common fields provided by passport-google-oauth
+    const {
+      id,
+      displayName,
+      name,
+      emails,
+      photos,
+      provider,
+      _json // raw Google profile JSON
+    } = req.user;
+
+    console.log('Google user info:');
+    console.log('id:', id);
+    console.log('displayName:', displayName);
+    console.log('name:', name);
+    console.log('emails:', emails);
+    console.log('photos:', photos);
+    console.log('provider:', provider);
+    console.log('raw profile (_json):', _json);
+
+    next();
+  },
   async (req, res, next) => {
     try {
-      await applySession(req, res, req.user.id);
-      res.redirect('/dashboard');
+      //await applySession(req, res, req.user.id);
+      res.redirect('/index');
     } catch (err) {
       return next(createError(500, "Failed to apply session"));
     }

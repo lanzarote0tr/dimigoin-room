@@ -15,7 +15,7 @@ function applySession(req, next, userId) {
   req.session.isVerified = true;
   req.session.save(function (err) {
     if (err) {
-      return next(createError(500, "Error saving session"));
+      throw createError(500, "Error saving session");
     }
     next();
   });
