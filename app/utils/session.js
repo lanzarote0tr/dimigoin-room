@@ -31,4 +31,4 @@ function purgeSession(req, res, next) {
 }
 
 
-export { verifySession, applySession, purgeSession, isLoggedIn, refreshSession };
+export { verifySession, applySession, purgeSession };
