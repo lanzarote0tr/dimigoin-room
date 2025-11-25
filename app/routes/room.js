@@ -1,6 +1,7 @@
 import { Router } from "express";
 import createError from "http-errors";
 import { verifySession } from "../utils/session.js";
+import pool from '../utils/connectdb.js';
 
 const router = Router();
 
