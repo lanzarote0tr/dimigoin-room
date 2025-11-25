@@ -15,7 +15,7 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "test": "node app.js"
+    "start": "node app.js"
   },
   "dependencies": {
     "cookie-parser": "^1.4.7",
