@@ -8,7 +8,7 @@ import { verifySession } from "../utils/session.js";
 const router = Router();
 
 router.use("/auth", authRouter);
-router.use("/room", roomRouter); // TODO: Protect this route
+router.use("/room", verifySession, roomRouter);
 
 router.use(function (req, res, next) {
   next(createError(404));
