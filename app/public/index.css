@@ -63,6 +63,7 @@ body {
 .applyroom-section {
 	width: 100%;
 	max-width: 450px;
+	margin: auto;
 	background: #111111;
 	display: flex;
 	flex-direction: column;
