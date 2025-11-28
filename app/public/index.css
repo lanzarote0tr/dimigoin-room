@@ -26,9 +26,12 @@ body {
 	align-items: center;
 	margin-bottom: 36px;
 }
+.logo > img {
+	width: 30px;
+}
 .logo > span {
 	color: #fff;
-	font-size: 22px;
+	font-size: 25px;
 	font-weight: 600;
 	margin-top: 8px;
 }
