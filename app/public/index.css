@@ -8,6 +8,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	font-family: 'Noto Sans KR', sans-serif;
+	color: rgb(244, 244, 245);
 }
 .center-section {
 	width: 100%;
@@ -22,12 +23,12 @@ body {
 
 .logo {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	align-items: center;
 	margin-bottom: 36px;
 }
 .logo > img {
-	width: 30px;
+	height: 32px;
 }
 .logo > span {
 	color: #fff;
@@ -35,7 +36,6 @@ body {
 	font-weight: 600;
 	margin-top: 8px;
 }
-
 
 .login-btn {
 	background: #232325;
