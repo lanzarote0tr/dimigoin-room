@@ -1,34 +1,75 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>프로젝트실 신청 플랫폼</title>
-  <link rel="stylesheet" href="/index.css">
-  <link rel="stylesheet" href="../public/index.css"> <!-- debug -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>디미고인 로그인</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #151515;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .center-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+    }
+    .login-btn {
+      background: #232325;
+      color: #fff;
+      width: 270px;
+      height: 44px;
+      border-radius: 14px;
+      border: none;
+      margin: 24px 0 8px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .login-btn svg {
+      margin-right: 10px;
+    }
+    .forgot-link {
+      color: #6e6e6e;
+      font-size: 13px;
+      margin-top: 6px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .scenery {
+      width: 100%;
+      max-width: 450px;
+      margin-bottom: 0;
+    }
+  </style>
 </head>
 <body>
-  <div class="constraint">
-    <div class="dimigoin-logo">
-      <img src="/logo.svg" alt="">
-      <p>디미고인</p>
+  <div class="center-section">
+    <div style="margin-bottom:32px;">
+      <img src="logo.svg" alt="디미고인 로고" width="56" />
     </div>
-    <div class="vstack">
-      <div class="hstack">
-        <div class="login">
-          <a class="google-btn" href="/api/auth/login" role="button" aria-label="Sign in with Google">
-            <span class="google-icon" aria-hidden="true">
-              <svg viewBox="0 0 533.5 544.3" xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-                <path fill="#4285F4" d="M533.5 278.4c0-18.6-1.6-36.6-4.6-54H272v102.3h146.9c-6.3 33.8-25 62.5-53.4 81.6v67.8h86.3c50.5-46.5 81.7-115.1 81.7-197.7z"/>
-                <path fill="#34A853" d="M272 544.3c72.6 0 133.6-24.1 178.1-65.5l-86.3-67.8c-24.1 16.2-55 25.8-91.8 25.8-70.6 0-130.4-47.6-151.9-111.6H31.8v70.1C76.1 486.8 167.6 544.3 272 544.3z"/>
-                <path fill="#FBBC05" d="M120.1 325.3c-11.4-33.8-11.4-70.4 0-104.2V151H31.8C11.6 197.8 0 235.8 0 272.2s11.6 74.4 31.8 121.2l88.3-68.1z"/>
-                <path fill="#EA4335" d="M272 107.9c39.4 0 74.9 13.6 102.8 40.3l76.9-76.9C406.1 24.2 345.1 0 272 0 167.6 0 76.1 57.5 31.8 142.2l88.3 68.1c21.5-64 81.3-111.6 151.9-111.6z"/>
-              </svg>
-            </span>
-            <span>디미고 구글 계정으로 로그인</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <img src="/scenery.svg" alt="" class="scenery">
+    <div style="color:#fff;font-size:22px;font-weight:600; margin-bottom:36px;">디미고인</div>
+    <button class="login-btn">
+      <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google Logo" width="24" height="24" />
+      디미고 구글 계정으로 로그인
+    </button>
+    <div class="forgot-link">인증번호를 잊으셨나요?</div>
+  </div>
+  <!-- Scenery SVG at the bottom -->
+  <div class="scenery">
+    <img src="scenery.svg" alt="Scenery" style="width:100%;" />
   </div>
 </body>
 </html>
