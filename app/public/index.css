@@ -67,6 +67,7 @@ body {
 .footer-nav {
 	width: 100%;
 	max-width: 450px;
+	color: rgb(232, 60, 119);
 	background: #111111;
 	display: flex;
 	flex-direction: row;
@@ -80,8 +81,12 @@ body {
 	font-size: 0.875rem;
 	color: rgb(153, 153, 153);
 	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 .nav-button > svg {
+	color: inherit;
 	fill: rgba(232, 60, 119, 0.5);
 }
 #room {
