@@ -10,6 +10,8 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 .center-section {
+	width: 100%;
+	max-width: 450px;
 	background: #888888;
 	display: flex;
 	flex-direction: column;
