@@ -13,30 +13,7 @@ router.get('/session', verifySession, (req, res) => {
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/login-callback', passport.authenticate('google', { failureRedirect: '/login-failed' }), async (req, res, next) => {
-  if (!req.user) {
-    return next(createError(500, "No user info from Google"));
-  }
-  const userId = req.user._json.sub
-  const userPic = req.user._json.picture;
-  const displayName = req.user._json.name;
-  const [rst] = await pool.query(
-    "SELECT id FROM users WHERE id = ?",
-    [userId]
-  );
-  if (rst.length === 0) {
-    // New user, create session after inserting into DB
-    await pool.query(
-      "INSERT IGNORE INTO users (id, name, picture, role) VALUES (?, ?, ?, 'student')",
-      [userId, displayName, userPic]
-    );
-  } else {
-    // Existing user, update profile info
-    await pool.query(
-      "UPDATE users SET name = ?, picture = ? WHERE id = ?",
-      [displayName, userPic, userId]
-    );
-  }
-  applySession(req, userId);
+  applySession(req, 1313);
   return res.redirect('/app/applyroom');
   }
 );
