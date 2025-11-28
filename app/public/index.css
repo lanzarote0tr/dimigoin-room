@@ -32,7 +32,7 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 36px;
+	margin-top: 36px;
 }
 .logo > img {
 	height: 32px;
