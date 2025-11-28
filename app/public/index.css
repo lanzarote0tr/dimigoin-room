@@ -1,5 +1,6 @@
 button {
-	font-family: inherit;
+	font: inherit;
+	color: inherit;
 	cursor: pointer;
 	border: none;
 	background: none;
