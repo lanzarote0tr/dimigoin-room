@@ -62,3 +62,17 @@ body {
 	max-width: 450px;
 	margin-bottom: 0;
 }
+
+/* applyroom.ejs styles */
+.footer-nav {
+	width: 100%;
+	max-width: 450px;
+	background: #111111;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 16px;
+}
+
+
