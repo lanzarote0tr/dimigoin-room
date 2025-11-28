@@ -81,7 +81,10 @@ body {
 	color: rgb(153, 153, 153);
 	cursor: pointer;
 }
-.nav-button > img svg {
+.nav-button > svg {
 	fill: rgba(232, 60, 119, 0.5);
+}
+#room {
+	fill: rgba(232, 60, 119, 1);
 }
 
