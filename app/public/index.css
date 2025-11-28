@@ -86,6 +86,7 @@ body {
 	background-color: inherit;
 	border: rgb(232, 60, 119) 3px solid;
 	border-radius: 16px;
+	color: #dddddd;
 	width: -webkit-fill-available;
 	height: 40px;
 }
