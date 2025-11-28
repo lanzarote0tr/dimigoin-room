@@ -16,13 +16,16 @@ body {
 }
 .center-section {
 	width: 100%;
-	max-width: 450px;
+	max-width: 476px;
+	margin: 0 auto;
+	min-height: 100vh;
 	background: #111111;
 	display: flex;
 	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: center;
+	justify-content: space-between;
 	align-items: stretch;
-	justify-content: center;
-	flex: 1;
 }
 .logo {
 	display: flex;
