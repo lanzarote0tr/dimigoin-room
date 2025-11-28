@@ -10,7 +10,7 @@ router.get('/session', verifySession, (req, res) => {
   return res.status(200).json({ message: "Session is valid", userId: req.session.userId });
 });
 
-router.get('/login', passport.authenticate('google', { scope: ['profile', 'email'] }));
+router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/login-callback', passport.authenticate('google', { failureRedirect: '/login-failed' }), async (req, res, next) => {
   if (!req.user) {

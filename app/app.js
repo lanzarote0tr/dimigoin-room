@@ -12,12 +12,9 @@ import fs from 'fs';
 import session from 'express-session';
 import connectMySQL from 'express-mysql-session';
 
-import apiRouter from "./routes/api.js";
-import frontendRouter from "./routes/frontend.js";
 import pool from './utils/connectdb.js';
 import passport from 'passport';
 import './utils/passport.js';
-import { isLoggedIn } from "./utils/session.js";
 
 // __dirname
 const __filename = fileURLToPath(import.meta.url);
@@ -128,18 +125,17 @@ app.use(passport.session());
 
 app.use(express.static(path.join(__dirname, "public")));
 
+import frontendRouter from "./routes/frontend.js";
+import apiRouter from "./routes/api.js";
+import authRouter from "./routes/auth.js"
+
 app.get('/', function(req, res) {
-  if (isLoggedIn(req)) {
-    return res.redirect('/app');
-  } else {
-    res.render('index');
-  }
+  return res.redirect('/app');
 });
 
 app.use('/app', frontendRouter);
-
-// API routes should be defined before the catch-all route
 app.use("/api", apiRouter);
+app.use('/auth', authRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
