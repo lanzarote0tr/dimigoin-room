@@ -1,3 +1,10 @@
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+}
+
 body {
 	margin: 0;
 	padding: 0;
@@ -20,7 +27,6 @@ body {
 	justify-content: center;
 	flex: 1;
 }
-
 .logo {
 	display: flex;
 	flex-direction: row;
@@ -37,22 +43,19 @@ body {
 }
 
 .login-btn {
-	background: #232325;
-	color: #fff;
-	width: 270px;
-	height: 44px;
-	border-radius: 14px;
-	border: none;
-	margin: 24px 0 8px 0;
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 16px;
-	font-weight: 500;
-	cursor: pointer;
+	flex-direction: row;
+	place-content: center;
+	gap: 10px;
+	width: 80%;
+	margin: auto;
+	background-color: rgba(72, 79, 138, 0.15);
+	padding: 16px 12px;
+	border-radius: 16px;
 }
 .login-btn svg {
-	margin-right: 10px;
+	display: block;
+	max-width: 100%;
 }
 .scenery {
 	width: 100%;
