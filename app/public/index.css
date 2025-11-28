@@ -62,7 +62,7 @@ body {
 /* applyroom.ejs styles */
 .applyroom-section {
 	width: 100%;
-	max-width: 450px;
+	max-width: 476px;
 	margin: 0 auto;
 	min-height: 100vh;
 	background: #111111;
@@ -78,7 +78,7 @@ body {
 	height: 84px;
 	padding: 0 12px;
 	max-width: 450px;
-	color: rgb(232, 60, 119);
+	color: rgb(232, 60, 119, 0.5);
 	background: #111111;
 	border-radius: 16px 16px 0px 0px;
     background-color: rgb(35, 35, 35);
@@ -99,10 +99,15 @@ body {
 	align-items: center;
 }
 .nav-button > svg {
-	color: inherit;
+	color: rgba(232, 60, 119, 0.5);
 	fill: rgba(232, 60, 119, 0.5);
 }
 #room {
+	color: rgba(232, 60, 119, 1);
 	fill: rgba(232, 60, 119, 1);
+}
+#room > svg {
+	color: inherit;
+	fill: inherit;
 }
 
