@@ -7,7 +7,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 	color: rgb(244, 244, 245);
 }
 .center-section {
@@ -25,13 +25,13 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 	margin-bottom: 36px;
 }
 .logo > img {
 	height: 32px;
 }
 .logo > span {
-	color: #fff;
 	font-size: 1.5rem;
 	font-weight: 600;
 }
