@@ -73,6 +73,21 @@ body {
 	justify-content: space-between;
 	align-items: stretch;
 }
+.apply {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+.apply input {
+	background-color: inherit;
+	border: rgb(232, 60, 119) 3px solid;
+	border-radius: 16px;
+	width: -webkit-fill-available;
+	height: 40px;
+}
+
+
 .footer-nav {
 	width: 100%;
 	height: 84px;
