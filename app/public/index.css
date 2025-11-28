@@ -32,9 +32,8 @@ body {
 }
 .logo > span {
 	color: #fff;
-	font-size: 25px;
+	font-size: 1.5rem;
 	font-weight: 600;
-	margin-top: 8px;
 }
 
 .login-btn {
