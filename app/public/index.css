@@ -77,30 +77,22 @@ body {
 	align-items: stretch;
 }
 .select-option {
-	width: -webkit-fill-available;
-	height: 60px;
-	background-color: rgb(35, 35, 35);
-	border: none;
-	border-radius: 1.2rem;
-
-	margin-top: 36px;
 	display: flex;
-	flex-direction: row;
-	align-content: center;
-	justify-content: space-around;
-	gap: 20px;
+    background-color: rgb(35, 35, 35);
+    border-radius: 24px;
+    padding: 6px;
+    gap: 4px;
 }
 .select-option > div {
-	border-radius: 1rem;
-	height: 45px;
-	flex: 1;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 1.125rem;
-	font-weight: 500;
-	background-color: rgb(45, 45, 45);
-	cursor: pointer;
+	flex: 1 1 0%;
+    padding: 8px 0px;
+    border: none;
+    border-radius: 22px;
+    background-color: rgb(17, 17, 17);
+    color: rgb(244, 244, 245);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s;
 }
 .apply {
 	padding: 24px;
