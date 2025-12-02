@@ -11,6 +11,7 @@ function verifySession(req, res, next) {
 
 // Apply session after login/register
 function applySession(req, userId) {
+  userId = String(userId);
   req.session.userId = userId;
   console.log(`Session applied for userId: ${userId}`);
   req.session.save(function (err) {
