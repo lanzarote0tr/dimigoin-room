@@ -93,3 +93,7 @@ svg {
     font-weight: 600;
     margin-top: 8px;
 }
+
+p {
+    margin-bottom: 0;
+}
