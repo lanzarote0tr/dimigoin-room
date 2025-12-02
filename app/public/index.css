@@ -82,6 +82,11 @@ body {
 	flex-direction: column;
 	gap: 10px;
 }
+.apply p {
+	margin: 0;
+	font-size: 1rem;
+	font-weight: 500;
+}
 .apply input {
 	background-color: inherit;
 	border: rgb(232, 60, 119) 3px solid;
