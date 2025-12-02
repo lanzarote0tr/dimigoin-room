@@ -12,7 +12,8 @@ router.get('/session', verifySession, (req, res) => {
 router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 router.get('/login-callback', passport.authenticate('google', { failureRedirect: '/login-failed' }), async (req, res, next) => {
-  applySession(req, 1313);
+  console.log("User authenticated:", req.user.id);
+  applySession(req, req.user.id);
   return res.redirect('/app/applyroom');
   }
 );
