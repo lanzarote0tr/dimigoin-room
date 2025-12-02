@@ -89,6 +89,17 @@ body {
 	justify-content: center;
 	gap: 20px;
 }
+.select-option > div {
+	border-radius: 1rem;
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.125rem;
+	font-weight: 500;
+	color: rgb(25, 25, 25);
+	cursor: pointer;
+}
 .apply {
 	padding: 24px;
 	display: flex;
