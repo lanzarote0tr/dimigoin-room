@@ -97,7 +97,7 @@ body {
 	align-items: center;
 	font-size: 1.125rem;
 	font-weight: 500;
-	color: rgb(25, 25, 25);
+	background-color: rgb(25, 25, 25);
 	cursor: pointer;
 }
 .apply {
