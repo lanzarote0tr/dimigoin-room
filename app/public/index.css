@@ -76,6 +76,19 @@ body {
 	justify-content: space-between;
 	align-items: stretch;
 }
+.select-option {
+	width: -webkit-fill-available;
+	height: 60px;
+	background-color: rgb(35, 35, 35);
+	border: none;
+	border-radius: 1.2rem;
+
+	margin-top: 36px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 20px;
+}
 .apply {
 	padding: 24px;
 	display: flex;
