@@ -1,36 +1,34 @@
 function submit() {
-    student = document.getElementById("student").value;
-    date = document.getElementById("date").value;
-    time = document.getElementById("time").value;
-    description = document.getElementById("description").value;
+    const name = document.getElementById("people").value;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const reason = document.getElementById("reason").value;
+    
+    if (!name || !date || !time || !reason) {
+        alert("모든 항목을 작성해주세요.");
+        return;
+    }
     fetch("/api/room/apply", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
-        credentials: "include",
-        body: JSON.stringify({
-            student: student,
-            date: date,
-            time: time,
-            description: description,
-        }),
-    })  .then((response) => response.json())
-        .then((data) => {
-            if (data.success) {
-                alert("신청이 성공적으로 제출되었습니다.");
-                window.location.href = "/applyroom";
-            } else {
-                alert("신청 제출에 실패했습니다: " + data.message);
-            }
-        })
-        .catch((error) => {
-            console.error("Error:", error);
-            alert("신청 제출 중 오류가 발생했습니다.");
-        });
-
-    return;
+        body: JSON.stringify({ name, date, time, reason })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert("방 신청이 완료되었습니다.");
+            window.location.reload();
+        } else {
+            alert("방 신청에 실패했습니다: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("서버와의 통신 중 오류가 발생했습니다.");
+    });
 }
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("submit-button").addEventListener("click", submit);
+    document.getElementById("submit").addEventListener("click", submit);
 });

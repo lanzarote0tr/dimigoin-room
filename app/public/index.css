@@ -100,6 +100,9 @@ body {
 	margin-top: 30px;
 	background-color: rgb(232, 60, 119);
 }
+#submit:hover {
+	cursor: pointer;
+}
 
 
 .footer-nav {
