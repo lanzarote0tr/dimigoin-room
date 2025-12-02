@@ -83,7 +83,8 @@ body {
 	gap: 10px;
 }
 .apply p {
-	margin: 0;
+	margin-bottom: 0;
+	margin-top: 20px;
 	font-size: 1rem;
 	font-weight: 500;
 }
