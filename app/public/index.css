@@ -96,6 +96,10 @@ body {
 	width: -webkit-fill-available;
 	height: 40px;
 }
+#submit {
+	margin-top: 30px;
+	background-color: rgb(232, 60, 119);
+}
 
 
 .footer-nav {
