@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
   res.render('index');
 });
 
-router.get('/applyroom', verifySession, function(req, res) {
+router.get('/applyroom', function(req, res) {
   res.render('applyroom');
 });
 
