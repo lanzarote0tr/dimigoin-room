@@ -10,9 +10,9 @@ router.get('/', function(req, res) {
 });
 
 router.post('/apply', async function(req, res, next) {
+  const { name, date, time, reason } = req.body;
   /*
   const userId = req.session.userId;
-  const { name, date, time, reason } = req.body;
   if (!name || !date || !time || !reason) {
     return next(createError(400, "Missing required fields"));
   }
