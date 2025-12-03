@@ -10,14 +10,16 @@ router.get('/', function(req, res) {
 });
 
 router.post('/apply', async function(req, res, next) {
+  /*
   const userId = req.session.userId;
   const { name, date, time, reason } = req.body;
   if (!name || !date || !time || !reason) {
     return next(createError(400, "Missing required fields"));
   }
+    */
   const [rst] = await pool.query(
     "INSERT INTO applications (rep, students, activity_date, activity_time, activity_description) VALUES (?, ?, ?, ?, ?)",
-    [userId, name, date, time, reason]
+    ['1234', name, date, time, reason]
   );
   return res.status(200).json({ success: true });
 });
