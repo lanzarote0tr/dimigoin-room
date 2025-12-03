@@ -31,4 +31,7 @@ function submit() {
 }
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("submit").addEventListener("click", submit);
+    document.getElementById("view").addEventListener("click", function() {
+        window.location.href = "/app/viewapplies";
+    });
 });
