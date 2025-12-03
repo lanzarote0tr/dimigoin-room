@@ -15,8 +15,7 @@ router.get('/login-callback', passport.authenticate('google', { failureRedirect:
   console.log("User authenticated:", req.user.id);
   applySession(req, req.user.id);
   return res.redirect('/app/applyroom');
-  }
-);
+});
 
 router.post('/logout', verifySession, (req, res, next) => {
   try {
